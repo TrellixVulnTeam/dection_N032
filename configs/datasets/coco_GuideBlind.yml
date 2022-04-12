@@ -1,0 +1,21 @@
+metric: COCO
+num_classes: 5
+
+TrainDataset:
+  !COCODataSet
+    image_dir: train
+    anno_path: annotations/instance_train.json
+    dataset_dir: /home/aistudio/GuideBlind/
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  !COCODataSet
+    image_dir: val
+    anno_path: annotations/instance_val.json
+    dataset_dir: /home/aistudio/GuideBlind/
+
+TestDataset:
+  !ImageFolder
+    ! anno_path: annotations/instance_val.json
+    image_dir: val
+    dataset_dir: /home/aistudio/GuideBlind/
